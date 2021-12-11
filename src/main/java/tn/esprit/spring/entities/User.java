@@ -21,6 +21,7 @@ public class User implements Serializable {
 	//commentaire 1
 	private static final long serialVersionUID = 1L;
 
+	// commentaire 2
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;   
