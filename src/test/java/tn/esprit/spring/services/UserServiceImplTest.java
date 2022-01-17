@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -52,8 +50,8 @@ public class UserServiceImplTest{
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = dateFormat.parse("2015-03-12");
 		User u = new User(4L,"Ahmed_modified", "Ahmed", d, Role.INGENIEUR); // L pour dire de type long | D double | F float
-		User UserAdded = us.updateUser(u);
-		Assertions.assertEquals(u.getLastName(), UserAdded.getLastName());
+		User UserUpdated = us.updateUser(u);
+		Assertions.assertEquals(u.getLastName(), UserUpdated.getLastName());
 		
 	}
 	
