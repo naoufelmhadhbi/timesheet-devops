@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +22,7 @@ public class UserServiceImplTest{
 	@Autowired
 	IUserService us;
 	
-	//@Test
+	@Test
 	//@Order (1)
 	public void testretrieveAllUsers() {
 		
