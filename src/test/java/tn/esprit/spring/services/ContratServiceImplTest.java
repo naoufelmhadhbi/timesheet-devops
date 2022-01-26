@@ -23,8 +23,8 @@ public class ContratServiceImplTest{
 	@Autowired
 	IContratService cs;
 	
-	//@Test
-	//@Order (1)
+	@Test
+	@Order (1)
 	public void Contrats() {
 		
 		List<Contrat> listUsers = cs.retrieveAllContrats();
@@ -33,8 +33,8 @@ public class ContratServiceImplTest{
 		Assertions.assertEquals(3, listUsers.size());
 	}
 	
-	//@Test
-	//@Order (2)
+	@Test
+	@Order (2)
 	public void testaddContrat() throws ParseException, java.text.ParseException {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,8 +45,8 @@ public class ContratServiceImplTest{
 		
 	}
 	
-	//@Test
-	//@Order (3)
+	@Test
+	@Order (3)
 	public void testupdateContrat() throws ParseException, java.text.ParseException {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,8 +57,8 @@ public class ContratServiceImplTest{
 		
 	}
 	
-	//@Test
-	//@Order (4)
+	@Test
+	@Order (4)
 	public void testretrieveContrat() {
 		
 		Contrat contratRetrieved = cs.retrieveContrat("3"); 
@@ -66,8 +66,8 @@ public class ContratServiceImplTest{
 		
 	}
 	
-	//@Test
-	//@Order (5)
+	@Test
+	@Order (5)
 	public void testdeleteContrat() {
 		
 		cs.deleteContrat("3"); 
