@@ -20,7 +20,7 @@ import tn.esprit.spring.services.IContratService;
 // singleton c'est par défaut 
 // prototype 
 // request 
-public class ContratRestControl {
+public class ContratRestController {
 
 	// Couplage Faible 
 	@Autowired 
