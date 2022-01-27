@@ -1,23 +1,41 @@
 pipeline {
 agent any
 stages {
-stage ('GIT') {
-steps {
-echo "Getting Project from Git";
-git "https://github.com/naoufelmhadhbi/timesheet-devops.git";
-}
-}
-stage ('MVN CLEAN') {
-steps {
-echo "Maven Clean";
-bat 'mvn clean';
-}
-}
-stage ('MVN TEST') {
-steps {
-echo "Maven Test JUnit";
-bat 'mvn test';
-}
-}
+    stage ('GIT') {
+        steps {
+            echo "Getting Project from Git";
+            git "https://github.com/naoufelmhadhbi/timesheet-devops.git";
+        }
+    }
+    stage ('MVN CLEAN') {
+        steps {
+            echo "Maven Clean";
+            bat 'mvn clean';
+        }
+    }
+    stage ('MVN TEST') {
+        steps {
+            echo "Maven Test JUnit";
+            bat 'mvn test';
+        }
+    }
+    stage ('TEST SONAR') {
+        steps {
+            echo "test sonar"; 
+            bat 'mvn sonar:sonar'; 
+        }
+    }  
+    stage ('MVN PACKAGE') {
+        steps {
+            echo "mvn package"; 
+            bat 'mvn package -Dmaven.test.skip=true'; 
+        }
+    }
+    stage ('MVN DEPLOY') {
+        steps {
+            echo "mvn deploy"; 
+            bat 'mvn deploy:deploy-file -DgroupId=tn.esprit -DartifactId=timesheet-devops -Dversion=1.0 -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/timesheet-devops-1.0.jar'; 
+        }
+    }
 }
 }
