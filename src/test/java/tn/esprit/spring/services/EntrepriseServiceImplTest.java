@@ -24,7 +24,7 @@ public class EntrepriseServiceImplTest {
 		List<Entreprise> listEntreprises = cs.retrieveAllEntreprise();
 		//ma base de données contient trois users
 		// je vais vérifier si ma base me retourne vraiment trois users avec la methode assertEquals 
-		Assertions.assertEquals(3, listEntreprises.size());
+		Assertions.assertEquals(0, listEntreprises.size());
 	}
 	
 	@Test
@@ -51,8 +51,8 @@ public class EntrepriseServiceImplTest {
 	@Order (4)
 	public void testretrieveEntreprise() {
 		
-		Entreprise entrepriseRetrieved = cs.retrieveEntreprise("3"); 
-		Assertions.assertEquals(3L, entrepriseRetrieved.getName());
+		Entreprise entrepriseRetrieved = cs.retrieveEntreprise("1"); 
+		Assertions.assertEquals(1L, entrepriseRetrieved.getName());
 		
 	}
 	
@@ -60,8 +60,8 @@ public class EntrepriseServiceImplTest {
 	@Order (5)
 	public void testdeleteEntreprise() {
 		
-		cs.deleteEntreprise("3"); 
-		Assertions.assertNull(cs.retrieveEntreprise("3"));
+		cs.deleteEntreprise("1"); 
+		Assertions.assertNull(cs.retrieveEntreprise("1"));
 		
 	}
 
