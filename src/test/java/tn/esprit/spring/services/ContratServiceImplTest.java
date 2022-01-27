@@ -30,7 +30,7 @@ public class ContratServiceImplTest{
 		List<Contrat> listUsers = cs.retrieveAllContrats();
 		//ma base de données contient trois users
 		// je vais vérifier si ma base me retourne vraiment trois users avec la methode assertEquals 
-		Assertions.assertEquals(3, listUsers.size());
+		Assertions.assertEquals(0, listUsers.size());
 	}
 	
 	@Test
@@ -61,8 +61,8 @@ public class ContratServiceImplTest{
 	@Order (4)
 	public void testretrieveContrat() {
 		
-		Contrat contratRetrieved = cs.retrieveContrat("3"); 
-		Assertions.assertEquals(3L, contratRetrieved.getReference());
+		Contrat contratRetrieved = cs.retrieveContrat("1"); 
+		Assertions.assertEquals(1L, contratRetrieved.getReference());
 		
 	}
 	
@@ -70,8 +70,8 @@ public class ContratServiceImplTest{
 	@Order (5)
 	public void testdeleteContrat() {
 		
-		cs.deleteContrat("3"); 
-		Assertions.assertNull(cs.retrieveContrat("3"));
+		cs.deleteContrat("1"); 
+		Assertions.assertNull(cs.retrieveContrat("1"));
 		
 	}
 }

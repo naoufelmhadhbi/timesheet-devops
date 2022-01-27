@@ -25,3 +25,4 @@ bin/
 
 *.jar
 .springBeans
+.history
