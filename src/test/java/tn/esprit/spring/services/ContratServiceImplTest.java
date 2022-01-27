@@ -51,7 +51,7 @@ public class ContratServiceImplTest{
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d_mofied = dateFormat.parse("2018-03-12");
-		Contrat c = new Contrat(3L, d_mofied, "CDI", 1500); // L pour dire de type long | D double | F float
+		Contrat c = new Contrat(1L, d_mofied, "CDI", 1500); // L pour dire de type long | D double | F float
 		Contrat ContratUpdated = cs.updateContrat(c);
 		Assertions.assertEquals(c.getReference(), ContratUpdated.getReference());
 		
