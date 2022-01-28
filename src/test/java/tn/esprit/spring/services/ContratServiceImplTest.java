@@ -30,7 +30,7 @@ public class ContratServiceImplTest{
 		List<Contrat> listUsers = cs.retrieveAllContrats();
 		//ma base de données contient trois users
 		// je vais vérifier si ma base me retourne vraiment trois users avec la methode assertEquals 
-		Assertions.assertEquals(2, listUsers.size());
+		Assertions.assertEquals(0, listUsers.size());
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class ContratServiceImplTest{
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d_mofied = dateFormat.parse("2018-03-12");
-		Contrat c = new Contrat(9L, d_mofied, "CDI", 1500); // L pour dire de type long | D double | F float
+		Contrat c = new Contrat(12L, d_mofied, "CDI", 1500); // L pour dire de type long | D double | F float
 		Contrat ContratUpdated = cs.updateContrat(c);
 		Assertions.assertEquals(c.getReference(), ContratUpdated.getReference());
 		
@@ -61,8 +61,8 @@ public class ContratServiceImplTest{
 	@Order (4)
 	public void testretrieveContrat() {
 		
-		Contrat contratRetrieved = cs.retrieveContrat("9"); 
-		Assertions.assertEquals(9L, contratRetrieved.getReference());
+		Contrat contratRetrieved = cs.retrieveContrat("12"); 
+		Assertions.assertEquals(12L, contratRetrieved.getReference());
 		
 	}
 	
@@ -70,8 +70,8 @@ public class ContratServiceImplTest{
 	@Order (5)
 	public void testdeleteContrat() {
 		
-		cs.deleteContrat("9"); 
-		Assertions.assertNull(cs.retrieveContrat("9"));
+		cs.deleteContrat("12"); 
+		Assertions.assertNull(cs.retrieveContrat("12"));
 		
 	}
 }
