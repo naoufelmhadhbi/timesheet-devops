@@ -51,7 +51,7 @@ public class UserServiceImplTest{
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = dateFormat.parse("2015-03-12");
-		User u = new User(13L,"Ahmed_modified", "Ahmed", d, Role.INGENIEUR); // L pour dire de type long | D double | F float
+		User u = new User(1L,"Ahmed_modified", "Ahmed", d, Role.INGENIEUR); // L pour dire de type long | D double | F float
 		User UserUpdated = us.updateUser(u);
 		Assertions.assertEquals(u.getLastName(), UserUpdated.getLastName());
 		
@@ -61,8 +61,8 @@ public class UserServiceImplTest{
 	@Order (4)
 	public void testretrieveUser() {
 		
-		User userRetrieved = us.retrieveUser("13"); 
-		Assertions.assertEquals(13L, userRetrieved.getId());
+		User userRetrieved = us.retrieveUser("1"); 
+		Assertions.assertEquals(1L, userRetrieved.getId());
 		
 	}
 	
@@ -70,8 +70,8 @@ public class UserServiceImplTest{
 	@Order (5)
 	public void testdeleteUser() {
 		
-		us.deleteUser("13"); 
-		Assertions.assertNull(us.retrieveUser("13"));
+		us.deleteUser("1"); 
+		Assertions.assertNull(us.retrieveUser("1"));
 		
 	}
 }
