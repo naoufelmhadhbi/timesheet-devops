@@ -24,3 +24,5 @@ bin/
 !/**/src/**/build
 
 *.jar
+.springBeans
+.history
