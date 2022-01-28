@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.EntrepriseRepository;
 	
-	@Service
-	public class EntrepriseServiceImpl implements IEntrepriseService {
+@Service
+public class EntrepriseServiceImpl implements IEntrepriseService {
 
 		@Autowired
 		EntrepriseRepository entrepriseRepository;

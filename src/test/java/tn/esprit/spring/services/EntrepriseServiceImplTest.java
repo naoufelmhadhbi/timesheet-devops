@@ -5,13 +5,18 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.expression.ParseException;
 
 import tn.esprit.spring.entities.Entreprise;
 
+@SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
 public class EntrepriseServiceImplTest {
 	
 	@Autowired
@@ -22,16 +27,15 @@ public class EntrepriseServiceImplTest {
 	public void Entreprises() {
 		
 		List<Entreprise> listEntreprises = cs.retrieveAllEntreprise();
-		//ma base de données contient trois users
-		// je vais vérifier si ma base me retourne vraiment trois users avec la methode assertEquals 
-		Assertions.assertEquals(3, listEntreprises.size());
+		//ma base de données est vide
+		Assertions.assertEquals(0, listEntreprises.size());
 	}
 	
 	@Test
 	@Order (2)
 	public void testaddEntreprise() throws ParseException, java.text.ParseException {
 		
-		Entreprise c = new Entreprise("entreprise1", "entreprise1"); // le user ça sera ajouter avec l'id 4 puisque j'ai trois ancien users
+		Entreprise c = new Entreprise("entreprise1", "entreprise1");
 		Entreprise EntrepriseAdded = cs.addEntreprise(c);
 		Assertions.assertEquals(c.getName(), EntrepriseAdded.getName());
 		
@@ -41,7 +45,7 @@ public class EntrepriseServiceImplTest {
 	@Order (3)
 	public void testupdateEntreprise() throws ParseException, java.text.ParseException {
 		
-		Entreprise c = new Entreprise("entreprise2", "entreprise1"); // L pour dire de type long | D double | F float
+		Entreprise c = new Entreprise(1L, "entreprise2", "entreprise2");
 		Entreprise EntrepriseUpdated = cs.updateEntreprise(c);
 		Assertions.assertEquals(c.getName(), EntrepriseUpdated.getName());
 		
@@ -51,8 +55,8 @@ public class EntrepriseServiceImplTest {
 	@Order (4)
 	public void testretrieveEntreprise() {
 		
-		Entreprise entrepriseRetrieved = cs.retrieveEntreprise("3"); 
-		Assertions.assertEquals(3L, entrepriseRetrieved.getName());
+		Entreprise entrepriseRetrieved = cs.retrieveEntreprise("1"); 
+		Assertions.assertEquals("entreprise2", entrepriseRetrieved.getName());
 		
 	}
 	
@@ -60,8 +64,8 @@ public class EntrepriseServiceImplTest {
 	@Order (5)
 	public void testdeleteEntreprise() {
 		
-		cs.deleteEntreprise("3"); 
-		Assertions.assertNull(cs.retrieveEntreprise("3"));
+		cs.deleteEntreprise("1"); 
+		Assertions.assertNull(cs.retrieveEntreprise("1"));
 		
 	}
 
