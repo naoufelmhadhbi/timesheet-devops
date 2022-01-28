@@ -28,50 +28,42 @@ public class ContratServiceImplTest{
 	public void Contrats() {
 		
 		List<Contrat> listUsers = cs.retrieveAllContrats();
-		//ma base de données contient trois users
-		// je vais vérifier si ma base me retourne vraiment trois users avec la methode assertEquals 
-		Assertions.assertEquals(3, listUsers.size());
+		//ma base de données contient 0 contrats
+		// je vais vérifier si ma base me retourne vraiment 0 contrats avec la methode assertEquals 
+		Assertions.assertEquals(0, listUsers.size());
 	}
 	
 	@Test
 	@Order (2)
 	public void testaddContrat() throws ParseException, java.text.ParseException {
-		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d = dateFormat.parse("2015-03-12");
-		Contrat c = new Contrat(d, "CDI", 1500); // le user ça sera ajouter avec l'id 4 puisque j'ai trois ancien users
+		Contrat c = new Contrat(d, "CDI", 1500); // le contrat ça sera ajouter avec l'id 1 puisque j'ai 0 contrats
 		Contrat ContratAdded = cs.addContrat(c);
 		Assertions.assertEquals(c.getReference(), ContratAdded.getReference());
-		
 	}
 	
 	@Test
 	@Order (3)
 	public void testupdateContrat() throws ParseException, java.text.ParseException {
-		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date d_mofied = dateFormat.parse("2018-03-12");
-		Contrat c = new Contrat(3L, d_mofied, "CDI", 1500); // L pour dire de type long | D double | F float
+		Contrat c = new Contrat(1L, d_mofied, "CDI", 1500); // L pour dire de type long | D double | F float
 		Contrat ContratUpdated = cs.updateContrat(c);
 		Assertions.assertEquals(c.getReference(), ContratUpdated.getReference());
-		
 	}
 	
 	@Test
 	@Order (4)
 	public void testretrieveContrat() {
-		
-		Contrat contratRetrieved = cs.retrieveContrat("3"); 
-		Assertions.assertEquals(3L, contratRetrieved.getReference());
-		
+		Contrat contratRetrieved = cs.retrieveContrat("1"); 
+		Assertions.assertEquals(1L, contratRetrieved.getReference());
 	}
 	
 	@Test
 	@Order (5)
 	public void testdeleteContrat() {
-		
-		cs.deleteContrat("3"); 
-		Assertions.assertNull(cs.retrieveContrat("3"));
-		
+		cs.deleteContrat("1"); 
+		Assertions.assertNull(cs.retrieveContrat("1"));
 	}
 }
