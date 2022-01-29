@@ -12,9 +12,9 @@ ARG OPENJDK_VERSION=8-jre-slim
 
 FROM maven:${MAVEN_VERSION} AS todo_build
 ## copier des sources pour pouvoir les compiler à l'intérieur de conteneur
-COPY ./src  /home/app/src
+COPY ../src  /home/app/src
 
-COPY pom.xml /home/app
+COPY ../pom.xml /home/app
 
 RUN mvn -f /home/app/pom.xml clean package -Dmaven.test.skip=true
 
